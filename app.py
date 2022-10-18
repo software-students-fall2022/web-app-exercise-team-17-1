@@ -94,7 +94,7 @@ def signupPage():
             return render_template('login.html')
 
 #***************************************************************#
-        
+# (DONE)        
 #route for create
 @app.route('/create',methods=['POST','GET'])
 def create():
@@ -137,7 +137,7 @@ def contacts_list():
     return render_template('contacts.html',docs=docs)
 
 #*****************************************************************#
-
+# (NOT DONE)
 #route for search
 @app.route('/search',methods=['POST','GET'])
 def search():
@@ -151,3 +151,7 @@ def search():
 
 #*****************************************************************#
 
+
+# Notes:
+# Create a route for favorites and update (NOT DONE)
+# Front-end part not done
