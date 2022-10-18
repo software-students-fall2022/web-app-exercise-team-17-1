@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+<div class="card-wrapper">
+  <div class="card">
+    <h1 class="center">Sign up</h1>
+
+    <form action="signup_form">
+      <label for="name">Name</label>
+      <input type="text" name="name" class="field" required />
+
+      <label for="name">Phone Number</label>
+      <input type="cell" name="cell" class="field" required />
+
+      <label for="name">Password</label>
+      <input type="password" name="name" class="field" required />
+
+      <input type="submit" value="Sign up" class="btn" />
+    </form>
+  </div>
+</div>
+{% endblock %}
