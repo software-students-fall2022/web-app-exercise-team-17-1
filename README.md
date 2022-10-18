@@ -9,8 +9,8 @@ See instructions. Delete this line and place the Product Vision Statement here.
 
 ## User stories
 
-See instructions. Delete this line and place a link to the user stories here.
+[User Stories](https://github.com/software-students-fall2022/web-app-exercise-team-17-1/issues)
 
 ## Task boards
 
-See instructions. Delete this line and place a link to the task boards here.
+[Sprints](https://github.com/software-students-fall2022/web-app-exercise-team-17-1/projects?query=is%3Aopen)
