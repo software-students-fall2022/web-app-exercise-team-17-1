@@ -20,17 +20,17 @@ if config['FLASK_ENV'] == 'development':
 
 
 # connect to the database
-# cxn = pymongo.MongoClient(config['MONGO_URI'], serverSelectionTimeoutMS=5000)
-# try:
-#     # verify the connection works by pinging the database
-#     cxn.admin.command('ping') # The ping command is cheap and does not require auth.
-#     db = cxn[config['MONGO_DBNAME']] # store a reference to the database
-#     print(' *', 'Connected to MongoDB!') # if we get here, the connection worked!
-# except Exception as e:
-#     # the ping command failed, so the connection is not available.
-#     # render_template('error.html', error=e) # render the edit template
-#     print(' *', "Failed to connect to MongoDB at", config['MONGO_URI'])
-#     print('Database connection error:', e) # debug
+cxn = pymongo.MongoClient(config['MONGO_URI'], serverSelectionTimeoutMS=5000)
+try:
+    # verify the connection works by pinging the database
+    cxn.admin.command('ping') # The ping command is cheap and does not require auth.
+    db = cxn[config['MONGO_DBNAME']] # store a reference to the database
+    print(' *', 'Connected to MongoDB!') # if we get here, the connection worked!
+except Exception as e:
+    # the ping command failed, so the connection is not available.
+    # render_template('error.html', error=e) # render the edit template
+    print(' *', "Failed to connect to MongoDB at", config['MONGO_URI'])
+    print('Database connection error:', e) # debug
 
 #********** All Variables ***********************************#
 currentUser = "-1"
@@ -66,7 +66,7 @@ def login_user():
             setvalue(name)
             return render_template('create.html')
         else:
-            return render_template('login.html')
+            return render_template('loginError.html')
         
 #******************************************************************#    
 # (DONE)
@@ -84,7 +84,7 @@ def signupPage():
         uname=request.form.get('uname')
         password=request.form.get('pass')
         if db.users.count_documents({'name':uname},limit=1):
-            return render_template('signup.html')
+            return render_template('signupError.html')
         else:
             user={
                 "name":uname,
