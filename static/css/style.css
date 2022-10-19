@@ -1,0 +1,21 @@
+body{
+    background-color: #b4ffba;
+    margin:0 auto;
+}
+header{
+    display:flex;
+}
+footer{
+    justify-content: center;
+}
+.container{
+    margin-left:30%;
+    margin-top:5%;
+}
+.smallLogo{
+    width: 100px;
+    height: 100px;
+}
+.contact{
+    border: 2px solid burlywood;
+}

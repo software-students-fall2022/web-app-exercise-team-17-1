@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block container %}
+
+    <h2>Contacts</h2>
+    <section class="contacts">
+
+        {% for doc in docs %}
+        <article class="contact">
+            <p>Name:{{doc.name}}</p>
+            <p>State:{{doc.state}}</p>
+            <p>Area code:{{doc.areaCode}}</p>
+            <p>Phone number:{{doc.number}}</p>
+            <p>Remarks:{{doc.remarks}}</p>
+        </article>
+        {%endfor%}
+    </section>
+
+{% endblock %}
