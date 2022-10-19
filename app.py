@@ -64,7 +64,7 @@ def login_user():
     else:
         if db.users.count_documents({'name':name, 'password':password}, limit = 1):
             setvalue(name)
-            return render_template('create.html')
+            return redirect(url_for('create'))
         else:
             return render_template('loginError.html')
         
