@@ -5,6 +5,24 @@ body{
 header{
     display:flex;
 }
+
+.headerDiv {
+    width:100%;
+    display:inline-block;
+    vertical-align:middle;
+    justify-content: center;
+}
+
+.headerNav {
+    display:inline-block;
+    text-align:center;
+    width:100%;
+}
+
+.navLinks {
+    vertical-align: middle;
+}
+
 footer{
     justify-content: center;
 }
