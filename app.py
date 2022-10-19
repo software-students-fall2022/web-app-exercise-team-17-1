@@ -16,7 +16,7 @@ config = dotenv_values(".env")
 # turn on debugging if in development mode
 if config['FLASK_ENV'] == 'development':
     # turn on debugging, if in development
-    app.debug = True  # debug mnode
+    app.debug = True # debug mnode
 
 
 # connect to the database
@@ -34,17 +34,13 @@ except Exception as e:
 
 #********** All Variables ***********************************#
 currentUser = "-1"
-
-
 def setvalue(n):
-    global currentUser
-    currentUser = n
+     global currentUser
+     currentUser=n
 
 #****************** All Routes ******************************#
 # (DONE)
-# route for homepage
-
-
+#route for homepage
 @app.route('/')
 def home():
     """
@@ -54,113 +50,102 @@ def home():
 
 #***************************************************************#
 # (DONE)
-# route for login
-
-
-@app.route('/login', methods=['POST', 'GET'])
+#route for login
+@app.route('/login',methods=['POST','GET'])
 def login_user():
     """
     Route for POST requests to login.
     Accepts the login information and check against the database.
     """
-    name = request.form.get('name')
-    password = request.form.get('password')
-    if request.method == "GET":
+    name=request.form.get('name')
+    password=request.form.get('password')
+    if request.method=="GET":
         return render_template('login.html')
     else:
-        if db.users.count_documents({'name': name, 'password': password}, limit=1):
+        if db.users.count_documents({'name':name, 'password':password}, limit = 1):
             setvalue(name)
             return render_template('create.html')
         else:
             return render_template('login.html')
-
-#******************************************************************#
+        
+#******************************************************************#    
 # (DONE)
-# route for signup
-
-
-@app.route('/signup', methods=['POST', 'GET'])
+#route for signup
+@app.route('/signup', methods=['POST','GET'])
 def signupPage():
     """
     Route for GET request to get signup page.
     """
-    if request.method == "GET":
+    if request.method=="GET":
         return render_template('signup.html')
     else:
-        fname = request.form.get('fname')
-        lname = request.form.get('lname')
-        uname = request.form.get('uname')
-        password = request.form.get('pass')
-        if db.users.count_documents({'name': uname}, limit=1):
+        fname=request.form.get('fname')
+        lname=request.form.get('lname')
+        uname=request.form.get('uname')
+        password=request.form.get('pass')
+        if db.users.count_documents({'name':uname},limit=1):
             return render_template('signup.html')
         else:
-            user = {
-                "name": uname,
-                "password": password
+            user={
+                "name":uname,
+                "password":password
             }
-            db.users.insert_one(user)
+            db.users.insert_one(user);
             return render_template('login.html')
 
 #***************************************************************#
-# (DONE)
-# route for create
-
-
-@app.route('/create', methods=['POST', 'GET'])
+# (DONE)        
+#route for create
+@app.route('/create',methods=['POST','GET'])
 def create():
     """
     Route for POST requests to create contact.
     Accepts the login information and saves in the database.
     """
-    if request.method == "GET":
+    if request.method=="GET":
         return render_template('create.html')
     else:
-        name = request.form.get('name')
-        state = request.form.get('state')
-        areaCode = request.form.get('areaCode')
-        number = request.form.get('number')
-        remarks = request.form.get('remarks')
+        name=request.form.get('name')
+        state=request.form.get('state')
+        areaCode=request.form.get('areaCode')
+        number=request.form.get('number')
+        remarks=request.form.get('remarks')
 
-        # create a new document(contact) with the user entered data
-        doc = {
-            "name": name,
-            "state": state,
-            "areaCode": areaCode,
-            "number": number,
-            "remarks": remarks,
+        #create a new document(contact) with the user entered data
+        doc={
+            "name":name,
+            "state":state,
+            "areaCode":areaCode,
+            "number":number,
+            "remarks":remarks,
             "created_at": datetime.datetime.utcnow(),
-            "currentUser": currentUser
+            "currentUser":currentUser
         }
-        db.contactList.insert_one(doc)  # insert a new document (contact)
+        db.contactList.insert_one(doc) #insert a new document (contact)
         return render_template('create.html')
 
 #****************************************************************#
 # (DONE)
-# route for contacts
-
-
+#route for contacts
 @app.route('/contacts')
 def contacts_list():
     """
     Route for GET request to see contacts.
     Shows all the contacts from the database.
     """
-    docs = db.contactList.find({"currentUser": currentUser}).sort(
-        "created_at", -1)  # sort in descending order of created_at timestamp
-    return render_template('contacts.html', docs=docs)
+    docs = db.contactList.find({"currentUser":currentUser}).sort("created_at", -1) # sort in descending order of created_at timestamp
+    return render_template('contacts.html',docs=docs)
 
 #*****************************************************************#
 # (NOT DONE)
-# route for search
-
-
-@app.route('/search', methods=['POST', 'GET'])
+#route for search
+@app.route('/search',methods=['POST','GET'])
 def search():
     """
     Route for GET and POST request to see contacts.
     Shows all the contacts from the database.
     """
-    if request.method == 'GET':
+    if request.method=='GET':
         return render_template('search.html')
 
 
@@ -170,4 +155,3 @@ def search():
 # Notes:
 # Create a route for favorites and update (NOT DONE)
 # Front-end part not done
-
