@@ -1,6 +1,8 @@
 body{
     background-color: #b4ffba;
     margin:0 auto;
+    padding: 10px;
+    text-align: center;
 }
 header{
     display:flex;
@@ -27,8 +29,8 @@ footer{
     justify-content: center;
 }
 .container{
-    margin-left:30%;
-    margin-top:5%;
+    margin-left: auto;
+    margin-top: 10%;
 }
 .smallLogo{
     width: 100px;
@@ -36,4 +38,7 @@ footer{
 }
 .contact{
     border: 2px solid burlywood;
+}
+img.logo {
+    width: 40%;
 }
