@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flask-MongoDB Example App</title>
     <link
       rel="stylesheet"
@@ -10,8 +11,9 @@
   <body>
       <header>
          <div class="headerDiv">
+         
+          <img src="{{ url_for('static', filename='images/phonebook.png') }}" width="50" height="50">
           <nav class="headerNav">
-            <img src="{{ url_for('static', filename='images/phonebook.png') }}">
             <a class="navLinks" href="{{ url_for('create')}}">Home</a>
             <a class="navLinks" href="{{ url_for('contacts_list')}}">My contacts</a>
             <a class="navLinks" href="{{ url_for('search')}}">Search</a>

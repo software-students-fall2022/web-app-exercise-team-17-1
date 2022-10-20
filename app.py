@@ -64,9 +64,9 @@ def login_user():
     else:
         if db.users.count_documents({'name':name, 'password':password}, limit = 1):
             setvalue(name)
-            return render_template('create.html')
+            return redirect(url_for('create'))
         else:
-            return render_template('login.html')
+            return render_template('loginError.html')
         
 #******************************************************************#    
 # (DONE)
@@ -84,7 +84,7 @@ def signupPage():
         uname=request.form.get('uname')
         password=request.form.get('pass')
         if db.users.count_documents({'name':uname},limit=1):
-            return render_template('signup.html')
+            return render_template('signupError.html')
         else:
             user={
                 "name":uname,
