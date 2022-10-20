@@ -23,8 +23,20 @@ header{
     vertical-align: middle;
 }
 
+.searchDiv {
+    text-align: center;
+    width: 100%;
+}
+
+.searchBar {
+    width:30%;
+}
+
 footer{
     justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
 .container{
     margin-left:30%;
