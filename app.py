@@ -175,7 +175,7 @@ def favorites():
      Route for GET and POST request to see favorite contacts.
      Shows all the contacts from the database.
      """
-     return render_template('')
+     return render_template('favorites.html')
 # Notes:
 # Create a route for favorites and update (NOT DONE)
 # Front-end part not done
