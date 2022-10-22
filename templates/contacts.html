@@ -8,6 +8,8 @@
 
         {% for doc in docs %}
         <article class="contact">
+            <a href="{{ url_for('edit',mongoid=doc._id)}}">Edit</a>
+            <br>
             <p>Name:{{doc.name}}</p>
             <p>State:{{doc.state}}</p>
             <p>Area code:{{doc.areaCode}}</p>

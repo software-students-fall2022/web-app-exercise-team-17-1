@@ -137,7 +137,7 @@ def contacts_list():
     return render_template('contacts.html',docs=docs)
 
 #*****************************************************************#
-# (NOT DONE)
+# (DONE)
 #route for search
 @app.route('/search',methods=['POST','GET'])
 def search():
@@ -176,6 +176,43 @@ def favorites():
      Shows all the contacts from the database.
      """
      return render_template('favorites.html')
-# Notes:
-# Create a route for favorites and update (NOT DONE)
-# Front-end part not done
+
+
+#******************************************************************#
+# (DONE)
+#route for editing/updating contacts
+# route to view the edit form for an existing contact
+@app.route('/edit/<mongoid>')
+def edit(mongoid):
+    """
+    Route for GET requests to the edit page.
+    Displays a form users can fill out to edit an existing record.
+    """
+    doc = db.contactList.find_one({"_id": ObjectId(mongoid)})
+    return render_template('edit.html', mongoid=mongoid, doc=doc) # render the edit template
+
+@app.route('/edit/<mongoid>', methods=['POST'])
+def edit_contact(mongoid):
+    """
+    Route for POST requests to the edit page.
+    Accepts the form submission data for the specified document and updates the document in the database.
+    """
+    name=request.form.get('name')
+    state=request.form.get('state')
+    areaCode=request.form.get('areaCode')
+    number=request.form.get('number')
+    remarks=request.form.get('remarks')
+    doc = {
+        "name":name,
+        "state":state,
+        "areaCode":areaCode,
+        "number":number,
+        "remarks":remarks,
+        "created_at": datetime.datetime.utcnow(),
+        "currentUser":currentUser
+    }
+    db.contactList.update_one (
+        {"_id": ObjectId(mongoid)}, # match criteria
+        {"$set": doc}
+    )
+    return redirect(url_for('contacts_list')) # tell the browser to make a request for contacts_list
