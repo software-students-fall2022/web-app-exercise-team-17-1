@@ -1,21 +1,71 @@
+
 body{
     background-color: #b4ffba;
-    margin:0 auto;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
 }
 header{
     display:flex;
 }
+
+.headerDiv {
+    width:100%;
+    display:inline-block;
+    vertical-align: middle;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.headerNav {
+    height: 50px;
+    display:inline-block;
+    text-align:center;
+    width:100%;
+}
+
+.navLinks {
+    vertical-align: middle;
+}
+
+.searchDiv {
+    text-align: center;
+    width: 100%;
+}
+
+.searchBar {
+    width:30%;
+}
+
 footer{
     justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
 .container{
     margin-left:30%;
     margin-top:5%;
 }
-.smallLogo{
-    width: 100px;
-    height: 100px;
-}
+/* .smallLogo{
+    width: 200px;
+    height: 200px;
+} */
 .contact{
     border: 2px solid burlywood;
 }
+
+a{
+    display: block;
+    padding: 8px;
+    background-color: #dddddd;
+    float: left;
+    list-style-type: none;
+}
+
+.image-container{
+    text-align: centger;
+    padding-left: 110px;
+}
+

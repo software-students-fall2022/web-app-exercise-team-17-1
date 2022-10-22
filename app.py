@@ -64,9 +64,9 @@ def login_user():
     else:
         if db.users.count_documents({'name':name, 'password':password}, limit = 1):
             setvalue(name)
-            return render_template('create.html')
+            return redirect(url_for('create'))
         else:
-            return render_template('login.html')
+            return render_template('loginError.html')
         
 #******************************************************************#    
 # (DONE)
@@ -84,7 +84,7 @@ def signupPage():
         uname=request.form.get('uname')
         password=request.form.get('pass')
         if db.users.count_documents({'name':uname},limit=1):
-            return render_template('signup.html')
+            return render_template('signupError.html')
         else:
             user={
                 "name":uname,
@@ -147,11 +147,35 @@ def search():
     """
     if request.method=='GET':
         return render_template('search.html')
+    if request.method=='POST':
+        keyword = ""
+        state = ""
+        count = 0
+        if(request.form.get('keyword') != ""):
+            keyword = request.form.get('keyword')
+        if(request.form.get('state') != ""):
+            state = request.form.get('state')
+        db.contactList.create_index([("name", "text")])
+        if(keyword != "" and state != ""):
+            docs = db.contactList.find({"state": state, "name": {"$regex": keyword, "$options":"i"}})
+        elif(keyword != ""):
+            docs = db.contactList.find({"name": {"$regex": keyword, "$options":"i"}})
+        elif(state != ""):
+            docs = db.contactList.find({"state": state})
+        else:
+            docs = db.contactList.find({})
+        return render_template('search.html', docs = docs)
 
 
 #*****************************************************************#
-
-
+# (NOT DONE)
+@app.route('/favorite', methods=['POST','GET'])
+def favorites():
+     """
+     Route for GET and POST request to see favorite contacts.
+     Shows all the contacts from the database.
+     """
+     return render_template('favorites.html')
 # Notes:
 # Create a route for favorites and update (NOT DONE)
 # Front-end part not done

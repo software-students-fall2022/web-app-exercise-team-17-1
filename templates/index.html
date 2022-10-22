@@ -17,7 +17,7 @@
 <body>
     <div class="wrapper">
         <div class="image-container">
-            <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}"/>
+            <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" width="200" height="200"/>
         </div>
         <div class="container">
             <button type="button" class="btn btn-warning"><a href="{{ url_for('login_user')}}">Sign In</a></button>
