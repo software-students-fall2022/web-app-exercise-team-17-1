@@ -119,7 +119,8 @@ def create():
             "number":number,
             "remarks":remarks,
             "created_at": datetime.datetime.utcnow(),
-            "currentUser":currentUser
+            "currentUser":currentUser,
+            "favorite":"False"
         }
         db.contactList.insert_one(doc) #insert a new document (contact)
         return render_template('create.html')
@@ -175,7 +176,8 @@ def favorites():
      Route for GET and POST request to see favorite contacts.
      Shows all the contacts from the database.
      """
-     return render_template('favorites.html')
+     docs = db.contactList.find({"favorite": "True"})
+     return render_template('favorites.html', docs = docs)
 
 
 #******************************************************************#
@@ -208,9 +210,13 @@ def edit_contact(mongoid):
         "areaCode":areaCode,
         "number":number,
         "remarks":remarks,
-        "created_at": datetime.datetime.utcnow(),
+        "created_at":datetime.datetime.utcnow(),
         "currentUser":currentUser
     }
+    if(request.form.get('favorite') != None):
+        doc["favorite"] = request.form.get('favorite')
+    else:
+        doc["favorite"] = "False"
     db.contactList.update_one (
         {"_id": ObjectId(mongoid)}, # match criteria
         {"$set": doc}

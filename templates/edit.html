@@ -58,16 +58,24 @@
             <option value="WV">WV</option>
             <option value="WY">WY</option>
         </select>
-        <br>
+        <br />
         <label class="sr-only" for="areaCode">Area code:</label>
         <input  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength = "3"class="form-control mb-2 mr-sm-2" id="areaCode" name="areaCode" value="{{doc.areaCode}}" required><br>
         <label class="sr-only" for="name">Phone number:</label>
         <input  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength = "7" class="form-control mb-2 mr-sm-2" id="number" name="number" value="{{doc.number}}" required>
-        <br>
+        <br />
         <label class="sr-only" for="remarks">Remarks:</label>
         <textarea rows="4" cols="50" id="remarks" form="contactForm" name="remarks">
             {{doc.remarks}}</textarea>
-        <br>
+        <br />
+        <label for="favorite">Favorite:</label>
+        {% if doc.favorite == "True" %}
+            <input type="checkbox" id="favorite" name="favorite" value="True" checked></input>
+            <br />
+        {% else %}
+            <input type="checkbox" id="favorite" name="favorite" value="True"></input>
+            <br />
+        {% endif %}
         <button type="submit" class="btn btn-warning">Update contact</button>
     </form>
 </section>
