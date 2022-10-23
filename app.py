@@ -151,7 +151,6 @@ def search():
     if request.method=='POST':
         keyword = ""
         state = ""
-        count = 0
         if(request.form.get('keyword') != ""):
             keyword = request.form.get('keyword')
         if(request.form.get('state') != ""):
