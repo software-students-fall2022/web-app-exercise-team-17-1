@@ -5,7 +5,7 @@ A little exercise to build a web application following an agile development proc
 
 ## Product vision statement
 
-An application for mobile users to store contacts
+A phonebook designed to store, create, filter, and favorite a user's contacts.
 
 ## User stories
 
