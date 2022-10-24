@@ -15,6 +15,7 @@
           <img src="{{ url_for('static', filename='images/phonebook.png') }}" width="50" height="50">
           <nav class="headerNav">
             <a class="navLinks" href="{{ url_for('create')}}">Home</a>
+            <a class="navLinks" href="{{ url_for('delete')}}">Delete contacts</a>
             <a class="navLinks" href="{{ url_for('contacts_list')}}">My contacts</a>
             <a class="navLinks" href="{{ url_for('search')}}">Search</a>
             <a class="navLinks" href="{{ url_for('favorites')}}">My favorites</a>
