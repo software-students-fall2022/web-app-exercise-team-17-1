@@ -41,7 +41,7 @@ header{
 
 footer{
     justify-content: center;
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
 }
