@@ -45,9 +45,9 @@ footer{
     left: 0;
 }
 .container{
-    margin-left:30%;
-    margin-top:5%;
+    text-align: center;
 }
+
 /* .smallLogo{
     width: 200px;
     height: 200px;
@@ -65,7 +65,13 @@ a{
 }
 
 .image-container{
-    text-align: centger;
-    padding-left: 110px;
+    text-align: center;
+    padding-bottom: 10%;
+}
+
+.signupLink {
+    text-decoration: none;
+    background-color: transparent;
+    width:225px;
 }
 
