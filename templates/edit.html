@@ -3,7 +3,7 @@
 <section class = "create_contacts">
     <form method="POST" action="{{ url_for('edit_contact', mongoid=mongoid) }}" id="contactForm">
         <label class="sr-only" for="name">Contact's Name:</label>
-        <input type="text" class="form-control mb-2 mr-sm-2" id="name" name="name" value="{{doc.name}}" required><br>
+        <input type="text" class="form-control mb-2 mr-sm-2" id="name" name="name" value="{{doc.name}}" required>
         <label class="sr-only" for="state">State:</label>
         <select name="state" size="1" value="{{doc.state}}" required>
             <option value="AK">AK</option>
@@ -61,9 +61,8 @@
         <br />
         <label class="sr-only" for="name">Phone number:</label>
         <input  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength = "10" class="form-control mb-2 mr-sm-2" id="number" name="number" value="{{doc.number}}" required>
-        <br />
         <label class="sr-only" for="remarks">Remarks:</label>
-        <textarea rows="4" cols="50" id="remarks" form="contactForm" name="remarks">
+        <textarea rows="4" cols="35" id="remarks" form="contactForm" name="remarks">
             {{doc.remarks}}</textarea>
         <br />
         <label for="favorite">Favorite:</label>
