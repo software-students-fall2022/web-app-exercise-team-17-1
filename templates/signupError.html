@@ -16,13 +16,13 @@
 </head>
 <body>
     <form method="POST" action="{{ url_for('signupPage')}}">
-        <label class="sr-only" for="name">First Name:</label>
+        <label class="authenticationLabel" for="name">First Name:</label>
         <input type="text" class="form-control mb-2 mr-sm-2" id="fname" name="fname" placeholder="Dixit" required>
-        <label class="sr-only" for="name">Last Name:</label>
+        <label class="authenticationLabel" for="name">Last Name:</label>
         <input type="text" class="form-control mb-2 mr-sm-2" id="lname" name="lname" placeholder="Timilsina" required>
-        <label class="sr-only" for="name">Login username:</label>
+        <label class="authenticationLabel" for="name">Login username:</label>
         <input type="text" class="form-control mb-2 mr-sm-2" id="uname" name="uname" placeholder="dxt521" required>
-        <label for="password">Password:</label>
+        <label class="authenticationLabel" for="password">Password:</label>
         <input type="password" class="form-control" id="pass" placeholder="password" name="pass" required>
         <br>
         <button type="submit" class="btn btn-warning">Sign Up</button>
@@ -31,7 +31,7 @@
       <form method="GET" class="form-inline" action="{{ url_for('home')}}">
         <button type="submit" class="btn btn-warning">Go Back</button>
       </form>
-      <p>Username already exist! Please try a different name</p>
+      <p class="error">Username already exists! Please try a different name</p>
 </body>
 </html>
 

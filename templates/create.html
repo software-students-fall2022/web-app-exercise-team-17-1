@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block container %}
 <section class = "create_contacts">
+    <h2>Create a New Contact</h2>
     <form method="POST" action="{{ url_for('create')}}" id="contactForm">
         <label class="sr-only" for="name">Contact's Name:</label>
         <input type="text" class="form-control mb-2 mr-sm-2" id="name" name="name" placeholder="Dixit" required>

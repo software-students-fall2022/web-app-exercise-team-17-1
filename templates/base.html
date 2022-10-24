@@ -15,15 +15,14 @@
   <body>
       <header>
          <div class="headerDiv">
-         
           <img src="{{ url_for('static', filename='images/phonebook.png') }}" width="50" height="50">
-          <nav class="headerNav">
-            <a class="navLinks" href="{{ url_for('create')}}">Home</a>
-            <a class="navLinks" href="{{ url_for('contacts_list')}}">My contacts</a>
-            <a class="navLinks" href="{{ url_for('search')}}">Search</a>
-            <a class="navLinks" href="{{ url_for('favorites')}}">My favorites</a>
-            <a class="navLinks" href="{{ url_for('home')}}">Sign out</a>
-          </nav>
+          <ul>
+            <li><a class="navLinks" href="{{ url_for('contacts_list')}}">Contacts</a></li>
+            <li><a class="navLinks" href="{{ url_for('create')}}">Create</a></li>
+            <li><a class="navLinks" href="{{ url_for('search')}}">Search</a></li>
+            <li><a class="navLinks" href="{{ url_for('favorites')}}">Favorites</a></li>
+            <li><a class="navLinks" href="{{ url_for('home')}}">Sign Out</a></li>
+          </ul>
          </div>
       </header>
       <main>{% block container %} {% endblock %}</main>

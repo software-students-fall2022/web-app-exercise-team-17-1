@@ -5,7 +5,9 @@
 
     <h2>My Contacts</h2>
     <section class="contacts">
-
+        {% if count == 0 %}
+        <h3>You currently have no contacts.</h1>
+        {%endif %}
         {% for doc in docs %}
         <article class="contact">
             <a class="link" href="{{ url_for('edit',mongoid=doc._id)}}"><button class="btn btn-warning">Edit</button></a> <a class="link" href="{{ url_for('delete',mongoid=doc._id)}}"><button class="btn btn-warning">Delete</button></a>

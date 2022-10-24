@@ -64,7 +64,7 @@ def login_user():
     else:
         if db.users.count_documents({'name':name, 'password':password}, limit = 1):
             setvalue(name)
-            return redirect(url_for('create'))
+            return redirect(url_for('contacts_list'))
         else:
             return render_template('loginError.html')
         
@@ -133,7 +133,9 @@ def contacts_list():
     Shows all the contacts from the database.
     """
     docs = db.contactList.find({"currentUser":currentUser}).sort("created_at", -1) # sort in descending order of created_at timestamp
-    return render_template('contacts.html',docs=docs)
+    count = db.contactList.count_documents({"currentUser":currentUser})
+    print(count, file=sys.stderr) 
+    return render_template('contacts.html',docs=docs, count=count)
 
 #*****************************************************************#
 # (DONE)
@@ -149,6 +151,7 @@ def search():
     if request.method=='POST':
         keyword = ""
         state = ""
+        count = 0
         if(request.form.get('keyword') != ""):
             keyword = request.form.get('keyword')
         if(request.form.get('state') != ""):
@@ -156,13 +159,17 @@ def search():
         db.contactList.create_index([("name", "text")])
         if(keyword != "" and state != ""):
             docs = db.contactList.find({"currentUser": currentUser, "state": state, "name": {"$regex": keyword, "$options":"i"}}).sort("created_at", -1)
+            count = db.contactList.count_documents({"currentUser": currentUser, "state": state, "name": {"$regex": keyword, "$options":"i"}})
         elif(keyword != ""):
             docs = db.contactList.find({"currentUser": currentUser, "name": {"$regex": keyword, "$options":"i"}}).sort("created_at", -1)
+            count = db.contactList.count_documents({"currentUser": currentUser, "name": {"$regex": keyword, "$options":"i"}})
         elif(state != ""):
             docs = db.contactList.find({"currentUser": currentUser, "state": state}).sort("created_at", -1)
+            count = db.contactList.count_documents({"currentUser": currentUser, "state": state})
         else:
             docs = db.contactList.find({"currentUser": currentUser}).sort("created_at", -1)
-        return render_template('search.html', docs = docs)
+            count = db.contactList.count_documents({"currentUser": currentUser})
+        return render_template('search.html', docs = docs, count=count)
 
 
 #*****************************************************************#
@@ -174,7 +181,8 @@ def favorites():
      Shows all the contacts from the database.
      """
      docs = db.contactList.find({"currentUser": currentUser, "favorite": "True"}).sort("created_at", -1)
-     return render_template('favorites.html', docs = docs)
+     count = db.contactList.count_documents({"currentUser": currentUser, "favorite": "True"})
+     return render_template('favorites.html', docs = docs, count = count)
 
 
 #******************************************************************#

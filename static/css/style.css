@@ -8,24 +8,33 @@ header{
     display:flex;
 }
 
+p {
+    margin-left: 8px;
+}
+
 .headerDiv {
     width:100%;
     display:inline-block;
     vertical-align: middle;
     justify-content: center;
     font-size: 14px;
+    margin-bottom: 10px;
 }
 
-.headerNav {
-    height: 50px;
-    display:inline-block;
-    text-align:center;
-    width:100%;
+ul {
+    list-style-type: none;
+    display:inline;
+    width:100%
 }
 
 .navLinks {
+    display:flex;
+    justify-content: center;
+    background-color: #ffc107;
     vertical-align: middle;
     text-decoration: none;
+    color: black;
+    width: 20%;
 }
 
 .searchDiv {
@@ -35,6 +44,12 @@ header{
 
 .searchBar {
     width:30%;
+    font-size: 14px;
+}
+
+.searchBtn {
+    font-size: 14px;
+    display:inline-block;
 }
 
 footer{
@@ -47,14 +62,24 @@ footer{
     text-align: center;
 }
 
+h2{
+    text-decoration:underline;
+    text-align: center;
+}
+
+h3 {
+    margin-top: 10px;
+    text-align: center;
+}
+
 /* .smallLogo{
     width: 200px;
     height: 200px;
 } */
 .contact{
     border: 2px solid #ffc107;
-    border-radius: 25px;
-    margin-top: 2px;
+    border-radius: 12px;
+    margin-top: 5px;
 }
 
 a{
@@ -91,6 +116,7 @@ a{
     text-decoration: none;
     background-color: transparent;
     width:75px;
+    color: black;
 }
 .loginButton {
     width: 100px;
@@ -100,4 +126,12 @@ a{
     padding: auto;
     font-size: 20px;
     margin: 5px;
+}
+
+.authenticationLabel {
+    margin-left: 5px;
+}
+
+.error {
+    margin-top: 15px;
 }

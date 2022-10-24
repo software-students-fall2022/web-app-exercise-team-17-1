@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% block container %}
 <div class="searchDiv">
+    <h2>Search Contacts by Filter</h2>
     <form method="POST" action="{{ url_for('search')}}">
+        <label>Keyword:</label>
         <input class="searchBar" type="text" placeholder="Search contacts..." name="keyword">
-        <label for="state">State</label>
+        <label for="state">State:</label>
     <select name="state" onmousedown="if(this.options.length>4){this.size=4;}"  onchange='this.size=0;' onblur="this.size=0;" size="1">
         <option value=""></option>
         <option value="AK">AK</option>
@@ -58,10 +60,13 @@
         <option value="WV">WV</option>
         <option value="WY">WY</option>
     </select>
-    <button type="submit" class="btn btn-warning">Search</button>
+        <button type="submit" class="searchBtn btn btn-warning">Search</button>  
     </form>
 </div>
 <div>
+    {% if count == 0 %}
+    <h3>No contacts were found. Try using a different filter.</h3>
+    {% endif %}
     {% for doc in docs %}
     <article class="contact">
         <a class="link" href="{{ url_for('edit',mongoid=doc._id)}}"><button class="btn btn-warning">Edit</button></a> <a class="link" href="{{ url_for('delete',mongoid=doc._id)}}"><button class="btn btn-warning">Delete</button></a>
