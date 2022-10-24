@@ -217,3 +217,16 @@ def edit_contact(mongoid):
         {"$set": doc}
     )
     return redirect(url_for('contacts_list')) # tell the browser to make a request for contacts_list
+
+@app.route('/delete/<mongoid>', methods=['GET', 'POST'])
+def delete(mongoid):
+    """
+    Route for GET requests to the delete page.
+    Deletes the specified record from the database, and then redirects the browser to the home page.
+    """
+    if request.method == "GET":
+        doc = db.contactList.find({"_id": ObjectId(mongoid)})
+        return render_template('delete.html', mongoid=mongoid, doc=doc)
+    if request.method == "POST":
+        db.contactList.delete_one({"_id": ObjectId(mongoid)})
+        return redirect(url_for('contacts_list')) # tell the web browser to make a request for the / route (the home function)

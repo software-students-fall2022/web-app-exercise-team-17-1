@@ -8,10 +8,11 @@
 
         {% for doc in docs %}
         <article class="contact">
-            <a href="{{ url_for('edit',mongoid=doc._id)}}">Edit</a>
+            <a class="link" href="{{ url_for('edit',mongoid=doc._id)}}"><button class="btn btn-warning">Edit</button></a> <a class="link" href="{{ url_for('delete',mongoid=doc._id)}}"><button class="btn btn-warning">Delete</button></a>
             <br>
             <br>
-            <p>Name: {{doc.name}}</p>
+            <br>
+            <p style="margin-top:-15px;">Name: {{doc.name}}</p>
             <p>State: {{doc.state}}</p>
             <p>Phone number: {{doc.number}}</p>
             <p>Remarks:{{doc.remarks}}</p>

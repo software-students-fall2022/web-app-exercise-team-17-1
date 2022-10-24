@@ -1,8 +1,6 @@
 
 body{
     background-color: #b4ffba;
-    margin-left: 5px;
-    padding-right: 5px;
     width: 100%;
     height: 100%;
 }
@@ -54,7 +52,9 @@ footer{
     height: 200px;
 } */
 .contact{
-    border: 2px solid burlywood;
+    border: 2px solid #ffc107;
+    border-radius: 25px;
+    margin-top: 2px;
 }
 
 a{
@@ -70,12 +70,28 @@ a{
     padding-bottom: 30%;
 }
 
+.link {
+    text-decoration:none;
+    background-color: transparent;
+    color: black;
+}
+
+.backBtn {
+    width: 73px;
+    text-align:center;
+    margin-left:-8px;
+    margin-top: 5px;
+}
+
+.deleteBtn {
+    margin-top: 5px;
+}
+
 .signupLink {
     text-decoration: none;
     background-color: transparent;
     width:75px;
 }
-
 .loginButton {
     width: 100px;
 }
