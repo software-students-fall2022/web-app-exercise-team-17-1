@@ -107,7 +107,6 @@ def create():
     else:
         name=request.form.get('name')
         state=request.form.get('state')
-        areaCode=request.form.get('areaCode')
         number=request.form.get('number')
         remarks=request.form.get('remarks')
 
@@ -115,7 +114,6 @@ def create():
         doc={
             "name":name,
             "state":state,
-            "areaCode":areaCode,
             "number":number,
             "remarks":remarks,
             "created_at": datetime.datetime.utcnow(),
@@ -157,13 +155,13 @@ def search():
             state = request.form.get('state')
         db.contactList.create_index([("name", "text")])
         if(keyword != "" and state != ""):
-            docs = db.contactList.find({"state": state, "name": {"$regex": keyword, "$options":"i"}})
+            docs = db.contactList.find({"currentUser": currentUser, "state": state, "name": {"$regex": keyword, "$options":"i"}}).sort("created_at", -1)
         elif(keyword != ""):
-            docs = db.contactList.find({"name": {"$regex": keyword, "$options":"i"}})
+            docs = db.contactList.find({"currentUser": currentUser, "name": {"$regex": keyword, "$options":"i"}}).sort("created_at", -1)
         elif(state != ""):
-            docs = db.contactList.find({"state": state})
+            docs = db.contactList.find({"currentUser": currentUser, "state": state}).sort("created_at", -1)
         else:
-            docs = db.contactList.find({})
+            docs = db.contactList.find({"currentUser": currentUser}).sort("created_at", -1)
         return render_template('search.html', docs = docs)
 
 
@@ -175,7 +173,7 @@ def favorites():
      Route for GET and POST request to see favorite contacts.
      Shows all the contacts from the database.
      """
-     docs = db.contactList.find({"favorite": "True"})
+     docs = db.contactList.find({"currentUser": currentUser, "favorite": "True"}).sort("created_at", -1)
      return render_template('favorites.html', docs = docs)
 
 
@@ -200,13 +198,11 @@ def edit_contact(mongoid):
     """
     name=request.form.get('name')
     state=request.form.get('state')
-    areaCode=request.form.get('areaCode')
     number=request.form.get('number')
     remarks=request.form.get('remarks')
     doc = {
         "name":name,
         "state":state,
-        "areaCode":areaCode,
         "number":number,
         "remarks":remarks,
         "created_at":datetime.datetime.utcnow(),

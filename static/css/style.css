@@ -27,6 +27,7 @@ header{
 
 .navLinks {
     vertical-align: middle;
+    text-decoration: none;
 }
 
 .searchDiv {
