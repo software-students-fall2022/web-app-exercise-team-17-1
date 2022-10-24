@@ -1,0 +1,87 @@
+
+body{
+    background-color: #b4ffba;
+    margin-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    height: 100%;
+}
+header{
+    display:flex;
+}
+
+.headerDiv {
+    width:100%;
+    display:inline-block;
+    vertical-align: middle;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.headerNav {
+    height: 50px;
+    display:inline-block;
+    text-align:center;
+    width:100%;
+}
+
+.navLinks {
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.searchDiv {
+    text-align: center;
+    width: 100%;
+}
+
+.searchBar {
+    width:30%;
+}
+
+footer{
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+.container{
+    text-align: center;
+}
+
+/* .smallLogo{
+    width: 200px;
+    height: 200px;
+} */
+.contact{
+    border: 2px solid burlywood;
+}
+
+a{
+    display: block;
+    padding: 8px;
+    background-color: #dddddd;
+    float: left;
+    list-style-type: none;
+}
+
+.image-container{
+    text-align: center;
+    padding-bottom: 30%;
+}
+
+.signupLink {
+    text-decoration: none;
+    background-color: transparent;
+    width:75px;
+}
+
+.loginButton {
+    width: 100px;
+}
+
+.create_contacts{
+    padding: auto;
+    font-size: 20px;
+    margin: 5px;
+}
