@@ -20,3 +20,5 @@ A phonebook designed to store, create, filter, and favorite a user's contacts.
 - Gong Kevin
 - Chen Ziyuan
 - Timilsina Dixit
+## Instruction to Run
+Use .env file posted in Team 17 discord channel
