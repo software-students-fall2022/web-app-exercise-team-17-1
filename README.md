@@ -14,3 +14,9 @@ A phonebook designed to store, create, filter, and favorite a user's contacts.
 ## Task boards
 
 [Sprints](https://github.com/software-students-fall2022/web-app-exercise-team-17-1/projects?query=is%3Aopen)
+
+## Team Members
+- Zha Kedan
+- Gong Kevin
+- Chen Ziyuan
+- Timilsina Dixit
